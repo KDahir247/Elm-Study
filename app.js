@@ -5263,8 +5263,13 @@ var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $elm$core$String$any = _String_any;
+var $elm$core$Basics$ge = _Utils_ge;
+var $author$project$Application$validPassword = function (model) {
+	return _Utils_eq(model.password, model.password_again) && (($elm$core$String$length(model.password) >= 8) && (A2($elm$core$String$any, $elm$core$Char$isDigit, model.password) && (A2($elm$core$String$any, $elm$core$Char$isUpper, model.password) && A2($elm$core$String$any, $elm$core$Char$isLower, model.password))));
+};
 var $author$project$Application$viewValidation = function (model) {
-	return _Utils_eq(model.password, model.password_again) ? A2(
+	return $author$project$Application$validPassword(model) ? A2(
 		$elm$html$Html$div,
 		_List_fromArray(
 			[
@@ -5281,7 +5286,7 @@ var $author$project$Application$viewValidation = function (model) {
 			]),
 		_List_fromArray(
 			[
-				$elm$html$Html$text('Passwords do not match!')
+				$elm$html$Html$text('passwords do not match or is less then 8 character and must contain a upper case and lower case character.!')
 			]));
 };
 var $author$project$Application$view = function (model) {
