@@ -1,0 +1,1 @@
+elm make src/Application.elm --output app.js
